@@ -1,20 +1,26 @@
-namespace Builtin_led {
+class LED {
 
-void init() {
-    pinMode(LED_BUILTIN, OUTPUT);
-}
+public:
 
-void on() {
-    digitalWrite(LED_BUILTIN, HIGH);
-}
+    LED(int a_pin): pin{a_pin} {};
 
-void off() {
-    digitalWrite(LED_BUILTIN, LOW);
-}
+    void init() {
+        pinMode(pin, OUTPUT);
+    }
 
-}
+    void on() {
+        digitalWrite(pin, HIGH);
+    }
 
-// вне namespace
+    void off() {
+        digitalWrite(pin, LOW);
+    }
+
+private:
+    int pin;
+
+};  // class
+
 void delay_s(unsigned int s) {
     delay(s * 1000);
 }
