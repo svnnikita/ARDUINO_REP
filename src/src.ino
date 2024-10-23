@@ -1,25 +1,19 @@
-#include "led.h"
+#include "led_templ.h"
 
-constexpr unsigned int PERIOD{4};
-constexpr unsigned int HALF_PERIOD{PERIOD / 4};
+constexpr unsigned int PERIOD{2};
+constexpr unsigned int HALF_PERIOD{PERIOD / 2};
 
-LED builtin_led(13);
-LED another_led(8);
+using Builtin_LED = LED<13>;
 
 void setup()
 {
-    builtin_led.init();
-    another_led.init();
-    Serial.begin(115200);
+    Builtin_LED::init();
 }
 
 void loop()
 {
-    builtin_led.on();
-    another_led.init();
+    Builtin_LED::on();
     delay_s(HALF_PERIOD);
-    builtin_led.off();
-    another_led.off();
+    Builtin_LED::off();
     delay_s(HALF_PERIOD);
-    Serial.print("0");
 }
